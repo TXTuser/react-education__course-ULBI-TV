@@ -10,21 +10,25 @@ import PostForm from "./components/PostForm";
 
 function App() {
   const [posts, setPosts] = useState([
-    { id: 1, title: "JavaScript", body: " - это язык программирования" },
-    { id: 2, title: "C++", body: " - это язык программирования" },
-    { id: 3, title: "Java", body: " - это язык программирования" },
-    { id: 4, title: "C", body: " - это язык программирования" },
-    { id: 5, title: "C#", body: " - это язык программирования" },
+    // { id: 1, title: "JavaScript", body: " - это язык программирования" },
+    // { id: 2, title: "C++", body: " - это язык программирования" },
+    // { id: 3, title: "Java", body: " - это язык программирования" },
+    // { id: 4, title: "C", body: " - это язык программирования" },
+    // { id: 5, title: "C#", body: " - это язык программирования" },
   ]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
   };
 
+  const removePost = (post) => {
+    setPosts(posts.filter(p => p.id !== post.id))
+  }
+
   return (
     <div className="App">
       <PostForm create={createPost}></PostForm>
-      <PostList posts={posts} title={"Список постов #1"}></PostList>
+      <PostList remove={removePost} posts={posts} title={"Список постов #1"}></PostList>
     </div>
   );
 }
